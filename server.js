@@ -13,12 +13,34 @@ app.set('view engine', 'handlebars');
 
 app.get("/",(req,res)=>{
 
-    res.render("index",{
+    res.render("home",{
         title: "Home",
         headingInfo : "Home Page",
         randomContent: "BLAH BLAH BLHA"
     })
 });
+
+app.get("/room-listing",(req,res)=>{
+
+    res.render("roomLsting",{
+        title: "Room Lsting",
+        headingInfo : "Room Lsting Page",
+
+    });
+
+
+});
+app.get("/user-registration",(req,res)=>{
+
+    res.render("userRegistration",{
+        title: "User Registration",
+        headingInfo : "User Registration Page",
+
+    });
+
+
+});
+
 
 const PORT=3000;
 app.listen(3000,()=>{
