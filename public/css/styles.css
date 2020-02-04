@@ -1,0 +1,262 @@
+/* Created By Avleen */
+
+html{
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background-color:white;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+  }
+  
+  .header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+  }
+  
+  .header .nav .icons img{
+    max-width: 7em;
+  }
+  
+  
+  .nav-items{
+    text-align: center;
+  }
+  
+  .nav-items ul {
+    list-style-type: none;
+    margin-bottom: 1rem;;
+    padding: 0;
+    overflow: hidden;
+    background-color:#4BF3E3;
+    border: 0.2em solid #4BF3E3;
+  }
+  
+  .nav-items li {
+    display: inline-block;
+    padding:0.5rem;
+    font-size: 1rem;
+    
+  }
+  
+  .nav-items li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .nav-items li a:hover {
+    background-color:white;
+    color: #0b4dad;
+  }
+  main{
+    margin-top: 14em;
+  }
+  .btn-center{
+    text-align: center
+  }
+  .btn{
+    border-radius: 5px;
+    width: auto;
+    min-width: 100px;
+    border: 0.2em solid #0b4dad;
+    display: inline-block;
+    min-height: 40px;
+    line-height: 40px;
+    font-size: 13pt;
+    color: #fff;
+    background: #0562e8;
+    outline: 0;
+    box-shadow: none;
+    transition: .4s ease all;
+    padding: 0 1.5rem;
+    font-weight: lighter;
+    text-decoration: none;
+  }
+  
+  .btn:hover{
+    color: #0b4dad;
+    background: #fff;
+    outline: 0;
+    box-shadow: none;
+  }
+  
+  .main-heading{
+    margin: 2rem 0 0 5rem;
+  }
+  
+  .main-heading h2{
+    color: #0b4dad;
+  }
+  
+  .container{
+    margin: 0 4rem;
+  }
+  
+  .places-block{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-column-gap: 0.2rem;
+      grid-row-gap: 0.2rem;
+      padding: 0 4em;  
+  }
+  
+  .destination_x{
+    background-color:white;
+    margin: 1rem 1rem;
+    background: #ffffff;
+    border-radius: 0.6em;
+    box-shadow: 0 0 21px 2px #142bfd1a;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 20px;
+  } 
+  
+  .content_x{
+    padding:0.45rem;
+  }
+  .content_x .p-heading{
+    font-weight: bolder;
+    font-size: 1.3em;
+    color: #0b4dad;
+  }
+  
+  .content_x .heart-red{
+    color: red;
+  }
+  .content_x span{
+    color: grey;
+    font-size:0.9em;
+  }
+  
+  .content_x .verified-box{
+    border: 1px solid #0b4dad;
+    border-radius: 0.3em;
+    background: #0b4dad;
+    color: white;
+    padding: 0.3em;
+  }
+  .box_info{
+  display: grid;
+  grid-template-columns:4fr 4fr;
+  padding:2 rem;
+  }
+  
+  
+  .footer-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color:#0b4dad;
+    color: white;
+    padding-top: 1.5 rem;   
+    }
+  .icons{
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  .createdby{
+    text-align: center;
+  }
+  .createdby p{
+    font-size: 1.2em;
+  }
+  
+  .icons{
+    display: block;
+    text-decoration: none;
+  }
+  .icons ul li{
+    color: white;
+    display: inline-block;
+  }
+  .icons ul li i{
+    margin-right: 2em;
+    line-height: 2em;
+    color: white;
+  }
+  
+  .icons ul{
+    line-height: 1em;
+     margin: 0;
+  }
+  .images{
+      max-width: 94%;
+      padding: 0.4rem;
+  }
+  
+  .test{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+       margin: 2rem 4rem;
+    }
+
+
+
+    /* styles for modals*/
+
+    .cd-signin-modal {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s, visibility 0.3s;
+      }
+      
+      .cd-signin-modal.cd-signin-modal--is-visible {
+        visibility: visible;
+        opacity: 1;
+      }
+    
+   /* For Mobiles */ 
+   @media screen and (max-width:500px) {
+    .places-block{
+        grid-template-columns: 1fr;
+    }
+    main {
+      margin-top: 21em;
+  }
+  .main-heading{
+    margin:0;
+    text-align: center;
+  }
+  .places-block {
+    padding: 0 2em;
+  }
+  .footer-grid{
+  grid-template-columns: 1fr; 
+  }
+  
+  }
+  
+  
+  /* For Tablets */
+  
+  @media screen and (max-width:927px) and (min-width:501px){
+      .places-block{
+          grid-template-columns: 1fr 1fr;
+      }
+      main {
+        margin-top: 17em;
+        text-align: center;
+    }
+    .places-block {
+      padding: 0 1.5em;
+  }
+  .footer-grid{
+    grid-template-columns: 1fr; 
+    }
+     
+  }
+  
+  /* For Desktop */
+  @media screen and (max-width:1128px) and (min-width:928px){
+      .places-block{
+          grid-template-columns: 1fr 1fr;
+      }
+    
+      
+  }
