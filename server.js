@@ -1,5 +1,6 @@
 const express = require("express");
 const exphbs  = require('express-handlebars');
+var bodyParser = require('body-parser')
 
 
 const app = express();
