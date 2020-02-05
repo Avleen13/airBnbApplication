@@ -23,7 +23,7 @@ app.get("/",(req,res)=>{
 
 app.get("/room-listing",(req,res)=>{
 
-    res.render("roomLsting",{
+    res.render("roomListing",{
         title: "Room Lsting",
         headingInfo : "Room Lsting Page",
 
@@ -39,6 +39,31 @@ app.get("/user-registration",(req,res)=>{
 
     });
 
+
+});
+
+
+app.post("/sendMessage",(req,res)=>{
+
+    const errors= [];
+
+  if(req.body.uname=="")
+  {
+    errors.push("Sorry, you must enter a phone number");
+
+  }
+
+  if(req.body.psw=="")
+  {
+    errors.push("Sorry, youmust enter a  message")
+  }
+
+  if(errors.length > 0)
+  {
+    res.render("form",{
+      messages : errors
+    })
+  }
 
 });
 
