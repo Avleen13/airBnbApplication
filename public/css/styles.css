@@ -28,8 +28,8 @@ html{
   }
   
   .nav-items ul {
+    margin: 0;
     list-style-type: none;
-    margin-bottom: 1rem;;
     padding: 0;
     overflow: hidden;
     background-color:#0562e8;
@@ -57,7 +57,7 @@ html{
     color: #0b4dad;
   }
   main{
-    margin-top: 14em;
+    margin-top: 11.5em;
   }
   .btn-center{
     text-align: center
@@ -196,6 +196,60 @@ html{
        margin: 2rem 4rem;
     }
 
+/*  banner section css */
+
+
+.banner-section{
+  background: url('/images/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 75vh;
+  position: relative;
+
+}
+
+.banner-section .container{
+    padding: 2em;
+    position: absolute;
+    top:8em;
+    left: 10em;
+    background-color: white;
+    border-radius: 0.4em;
+    width: 490px ;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.banner-section h2{
+    font-size: 30px;
+    line-height: 36px ;
+    letter-spacing: normal ;
+    text-transform: undefined ;
+    color: #484848 ;
+    padding-top: 6px;
+    padding-bottom: 6px !important;
+    margin: 0px ;
+    padding: 0px ;
+}
+
+.banner-form .space{
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+}
+.banner-form input[type="date" i],.banner-form input[type=text],.banner-form input[type=password]{
+  padding: 10px 7px;
+  border: 1px solid #EBEBEB;
+  border-radius: 4px ;
+  color:#888;
+  font-size: 0.8em;
+  font-family: "Roboto",Helvetica,Arial,sans-serif;
+  outline: none;
+}
+
+.banner-form label {
+  text-transform: uppercase;
+}
+
 
 
     /* styles for modals*/
@@ -203,7 +257,7 @@ html{
   /* Full-width input fields */
 input[type=text], input[type=password] {
   width: 100%;
-  padding: 12px 20px;
+  padding: 12px 5px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
@@ -318,6 +372,7 @@ span.psw {
 }
 
 
+
 /* promotional section */
 .products {
   display: grid;
@@ -377,7 +432,7 @@ span.psw {
         grid-template-columns: 1fr;
     }
     main {
-      margin-top: 21em;
+      margin-top: 12em;
   }
   .main-heading{
     margin:0;
