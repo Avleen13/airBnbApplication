@@ -15,7 +15,7 @@ app.set('view engine', 'handlebars');
 app.get("/",(req,res)=>{
 
     res.render("home",{
-        title: "Home",
+        title: "Top Rated Places to Stay | Airbnb",
         headingInfo : "Home Page",
         randomContent: "BLAH BLAH BLHA"
     })
@@ -42,25 +42,43 @@ app.get("/user-registration",(req,res)=>{
 
 });
 
+app.get("/sendMessage",(req,res)=>{
+  res.render("home",{
+      title:"SMS Page"
+  });
+  
+});
+
+
+
 
 app.post("/sendMessage",(req,res)=>{
 
     const errors= [];
 
-  if(req.body.uname=="")
+  if(req.body.where=="")
   {
     errors.push("Sorry, you must enter a phone number");
 
   }
 
-  if(req.body.psw=="")
+  if(req.body.checkin=="")
+  {
+    errors.push("Sorry, youmust enter a  message")
+  }
+
+  if(req.body.checkout=="")
+  {
+    errors.push("Sorry, youmust enter a  message")
+  }
+  if(req.body.guests=="")
   {
     errors.push("Sorry, youmust enter a  message")
   }
 
   if(errors.length > 0)
   {
-    res.render("form",{
+    res.render("home",{
       messages : errors
     })
   }
