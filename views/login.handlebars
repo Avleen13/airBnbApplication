@@ -1,5 +1,7 @@
 <div  class="modal">
-  
+  {{#each messages}}
+        <div class="errors">{{this}}</div>
+      {{/each}}
   <form class="modal-content animate" action="/sendMessage" method="post">
     <div class="imgcontainer">
       {{!-- <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> --}}

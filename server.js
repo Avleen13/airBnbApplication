@@ -90,15 +90,15 @@ app.post("/validation", (req,res)=>{
   const errors=[];
 
   if(req.body.uname == ""){
-      errors.push("Please enter your first name in order to continue");
+      errors.push("Please enter your first name.");
       
   }
 
   if(req.body.lst_name == ""){
-      errors.push("Please enter your last name in order to continue");
+      errors.push("Please enter your last name.");
   }
   if(req.body.psw == ""){
-    errors.push("Please enter your password in order to continue");
+    errors.push("Please enter your password.");
   }
   if(errors.length > 0 )
   {
