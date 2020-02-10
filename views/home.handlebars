@@ -2,144 +2,156 @@
   <div class="banner-section">
     <div class="container">
       <div class="banner-heading">
-      <h2>Book unique places to stay<br> and things to do.</h2>
-    </div>
-    <div class="banner-form">
-      <form class="banner-form" action="/sendMessage" method="post">
-
-      <div class="space">
-      <label for="where"><b>Where</b></label>
-      <input type="text" placeholder="Anywhere" name="where" >
+         {{#each messages}}
+         <div class="errors">{{this}}</div>
+        {{/each}} 
+        <h2>Book unique places to stay<br> and things to do.</h2>
       </div>
+      <div class="banner-form">
+        <form class="banner-form" action="/sendMessage" method="POST">
 
-      <div class="space">
-      <label for="checkin"><b>Check-In</b></label>
-      <input type="date" placeholder="dd-mm-yyyy" name="checkin">
+          <div class="space">
+            <label for="where"><b>Where</b></label>
+            <input type="text" placeholder="Anywhere" name="where">
+          </div>
 
-      
-      <label for="checkout"><b>Check-Out</b></label>
-      <input type="date" placeholder="dd-mm-yyyy" name="checkout">
+          <div class="space">
+            <label for="checkin"><b>Check-In</b></label>
+            <input type="date" placeholder="dd-mm-yyyy" name="checkin">
+
+
+            <label for="checkout"><b>Check-Out</b></label>
+            <input type="date" placeholder="dd-mm-yyyy" name="checkout">
+          </div>
+
+          <div class="space">
+            <label for="guests"><b>Guests</b></label>
+            <input type="text" placeholder="Guests" name="guests">
+          </div>
+
+          <input type="submit" class="btn" value="Search">
+        </form>
       </div>
-
-      <div class="space">
-      <label for="guests"><b>Guests</b></label>
-      <input type="text" placeholder="Guests" name="guests">
-      </div>
-
-      <input type="submit" class="btn" value="Search">
-      </form>
     </div>
-    </div>
-    
+
 
   </div>
 </section>
 
 <section>
-            <div class="main-heading">
-                <h2>Explore Airbnb</h2>
-            </div>
-
-<div class="explore" id="places-block">
-  <section class="productCard">
-  <div class="contaner">
-    <img  src="images/stays.jpg" alt="Skirt with Belt Zara" style="width:100%;">  
+  <div class="main-heading">
+    <h2>Explore Airbnb</h2>
   </div>
-    <div class="content_x">
-      <p class="p-heading"><strong>Stays</strong></p>
-    </div>
+
+  <div class="explore" id="places-block">
+    <section class="productCard">
+      <div class="contaner">
+        <img src="images/stays.jpg" alt="Skirt with Belt Zara" style="width:100%;">
+      </div>
+      <div class="content_x">
+        <p class="p-heading"><strong>Stays</strong></p>
+      </div>
+    </section>
+
+    <section class="productCard">
+      <div class="contaner">
+        <img src="images/exp.jpg" alt="Skirt with Belt Zara" style="width:100%;">
+      </div>
+      <div class="content_x">
+        <p class="p-heading"><strong>Experiences</strong></p>
+      </div>
+    </section>
+
+    <section class="productCard">
+      <div class="contaner">
+        <img src="images/adv.jpg" alt="Skirt with Belt Zara" style="width:100%;">
+      </div>
+      <div class="content_x">
+        <p class="p-heading"><strong>Adventures</strong></p>
+      </div>
+    </section>
+
+
+  </div>
 </section>
-
-  <section class="productCard">
-  <div class="contaner">
-    <img  src="images/exp.jpg" alt="Skirt with Belt Zara" style="width:100%;">  
-  </div>
-    <div class="content_x">
-      <p class="p-heading"><strong>Experiences</strong></p>
-    </div>
-</section>
-
-  <section class="productCard">
-  <div class="contaner">
-    <img  src="images/adv.jpg" alt="Skirt with Belt Zara" style="width:100%;">  
-  </div>
-    <div class="content_x">
-      <p class="p-heading"><strong>Adventures</strong></p>
-    </div>
-</section>
-
-
-  </div>
-        </section>
 
 <section>
-            <div class="main-heading">
-                <h2>Introducing Airbnb Adventures</h2>
-                <p>Multi-day trips led by local experts—activities, meals, and stays included.</p>
+  <div class="main-heading">
+    <h2>Introducing Airbnb Adventures</h2>
+    <p>Multi-day trips led by local experts—activities, meals, and stays included.</p>
+  </div>
+
+  <div class="places-block">
+    <div class="destination_x">
+      <img class="images" src="images/img9.jpg" alt="image">
+      <div class="content_x">
+        <span>HOTEL ROOM | CISTERNINO, LA HABANA</span>
+        <p class="p-heading">Entire Guest House <span class="heart-red"><i class="fas fa-heart"></i></span>
+        </p>
+        <p>Cave with garden at Sacromonte</p>
+        <p>$90 CAD/night.</p>
+        <p> <i class="fa fa-star" aria-hidden="true"></i> 4.5 (200)<p>
+            <div class="btn-center">
+              <a href="#" class="btn" title="book">Explore Now!</a>
             </div>
+      </div>
+      <div>
 
-<div class="products" id="places-block">
-  <section class="productCard">
-  <div class="container">
-    <img  src="images/img1.jpg" alt="Skirt with Belt Zara" style="width:100%;">
-       
-  </div>
-    <div class="content_x">
-      <p class="p-heading"><strong>Skirt with Belt Zara</strong></p>
-      <p class="productCardListItem"></p><h3>Custom</h3><p></p>
-      <p class="productCardListItem"></p><h3>Price: $300</h3><p></p>
-      <p class="productCardListItem"></p><h3>Average rating: 3</h3><p></p>
-      <input type="button" class="btn" id="addtocart" value="Add to Cart">
+      </div>
+
+    </div>
+
+    <div class="destination_x">
+      <img class="images" src="images/img10.jpg" alt="image">
+      <div class="content_x">
+        <span class="verified-box">VERIFIED | CISTERNINO, BRINDIS</span>
+        <p class="p-heading">Entire Flat <a href="#"><span class="heart-red"><i class="fas fa-heart"></i></span></a></p>
+        <p>Exceptional property private beach</p>
+        <p>$70 CAD/night.</p>
+        <p> <i class="fa fa-star" aria-hidden="true"></i> 4.7 (420)<p>
+            <div class="btn-center">
+              <a href="#" class="btn" title="book">Explore Now!</a>
+            </div>
+      </div>
+      <div>
+
+      </div>
+
+    </div>
+
+
+    <div class="destination_x">
+      <img class="images" src="images/img11.jpg" alt="image">
+      <div class="content_x">
+        <span>ENTIRE VILLA | SAN FRANCISCO</span>
+        <p class="p-heading">Entire House</p>
+        <p>A beautiful villa in North Iceland </p>
+        <p>$90 CAD/night.</p>
+        <p> <i class="fa fa-star" aria-hidden="true"></i> 4.9 (220) . Superhost<p>
+            <div class="btn-center">
+              <a href="#" class="btn" title="book">Explore Now!</a>
+            </div>
+      </div>
+      <div>
+
+      </div>
+
+    </div>
+
+
+    <div class="destination_x">
+      <img class="images" src="images/img12.jpg" alt="image">
+      <div class="content_x">
+        <span>PRIVATE ROOM | VEDADO, HABANA</span>
+        <p class="p-heading">Entire Villa <span class="heart-red"><i class="fas fa-heart"></i></span>
+        </p>
+        <p>Best View From Modern Chalet</p>
+        <p>$90 CAD/night.</p>
+        <p> <i class="fa fa-star" aria-hidden="true"></i> 5.0 (410)<p>
+            <div class="btn-center">
+              <a href="#" class="btn" title="book">Explore Now!</a>
+            </div>
+      </div>
+      <div>
       </div>
 </section>
-
-  <section class="productCard">
-  <div class="container">
-    <img  src="images/img2.jpg" alt="Flare Dress Zara" style="width:100%;">
-       
-  </div>
-    <div class="content_x">
-      <p class="p-heading"><strong>Flare Dress Zara</strong></p>
-      <p class="productCardListItem"></p><h3>Casual</h3><p></p>
-      <p class="productCardListItem"></p><h3>Price: $100</h3><p></p>
-      <p class="productCardListItem"></p><h3>Average rating: 4</h3><p></p>
-      <input type="button" class="btn" id="addtocart" value="Add to Cart">
-      </div>
-</section>
-
-  <section class="productCard">
-  <div class="container">
-    <img  src="images/img3.jpg" alt="Dress with Pleats Zara" style="width:100%;">
-       
-  </div>
-    <div class="content_x">
-      <p class="p-heading"><strong>Dress with Pleats Zara</strong></p>
-      <p class="productCardListItem"></p><h3>Party Wear</h3><p></p>
-      <p class="productCardListItem"></p><h3>Price: $230</h3><p></p>
-      <p class="productCardListItem"></p><h3>Average rating: 5</h3><p></p>
-      <input type="button" class="btn" id="addtocart" value="Add to Cart">
-      </div>
-</section>
-
-  <section class="productCard">
-  <div class="container">
-    <img  src="images/img4.jpg" alt="Floral Maxi Dress Zara" style="width:100%;">
-       
-  </div>
-    <div class="content_x">
-      <p class="p-heading"><strong>Floral Maxi Dress Zara</strong></p>
-      <p class="productCardListItem"></p><h3>Casual</h3><p></p>
-      <p class="productCardListItem"></p><h3>Price: $200</h3><p></p>
-      <p class="productCardListItem"></p><h3>Average rating: 4</h3><p></p>
-      <input type="button" class="btn" id="addtocart" value="Add to Cart">
-      </div>
-</section>
-
-  
-
-  </div>
-        </section>
-
-
-
-        

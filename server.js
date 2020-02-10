@@ -16,16 +16,15 @@ app.get("/",(req,res)=>{
 
     res.render("home",{
         title: "Top Rated Places to Stay | Airbnb",
-        headingInfo : "Home Page",
-        randomContent: "BLAH BLAH BLHA"
+        headingInfo : "Home Page"
     })
 });
 
 app.get("/room-listing",(req,res)=>{
 
     res.render("roomListing",{
-        title: "Room Lsting",
-        headingInfo : "Room Lsting Page",
+        title: "Room Listing",
+        headingInfo : "Room Listing Page"
 
     });
 
@@ -42,13 +41,14 @@ app.get("/user-registration",(req,res)=>{
 
 });
 
-app.get("/sendMessage",(req,res)=>{
-  res.render("home",{
-      title:"SMS Page"
-  });
-  
-});
+app.get("/login", (req,res) => {
 
+  res.render("login", {
+      title:"Log In",
+     
+  });
+
+});
 
 
 
@@ -56,24 +56,24 @@ app.post("/sendMessage",(req,res)=>{
 
     const errors= [];
 
-  if(req.body.where=="")
+  if(req.body.where == "")
   {
-    errors.push("Sorry, you must enter a phone number");
+    errors.push("Sorry, you must enter a place");
 
   }
 
-  if(req.body.checkin=="")
+  if(req.body.checkin == "")
   {
-    errors.push("Sorry, youmust enter a  message")
+    errors.push("Sorry, you must enter checkin date")
   }
 
-  if(req.body.checkout=="")
+  if(req.body.checkout == "")
   {
-    errors.push("Sorry, youmust enter a  message")
+    errors.push("Sorry, you must enter checkout date")
   }
-  if(req.body.guests=="")
+  if(req.body.guests == "")
   {
-    errors.push("Sorry, youmust enter a  message")
+    errors.push("Sorry, you must enter number of guests")
   }
 
   if(errors.length > 0)
@@ -83,6 +83,29 @@ app.post("/sendMessage",(req,res)=>{
     })
   }
 
+});
+
+app.post("/validation", (req,res)=>{
+
+  const errors=[];
+
+  if(req.body.uname == ""){
+      errors.push("Please enter your first name in order to continue");
+      
+  }
+
+  if(req.body.lst_name == ""){
+      errors.push("Please enter your last name in order to continue");
+  }
+  if(req.body.psw == ""){
+    errors.push("Please enter your password in order to continue");
+  }
+  if(errors.length > 0 )
+  {
+  res.render("userRegistration",{
+      messages:errors
+  })
+}
 });
 
 

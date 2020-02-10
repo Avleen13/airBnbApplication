@@ -57,7 +57,10 @@ html{
     color: #0b4dad;
   }
   main{
-    margin-top: 11.5em;
+    margin-top: 10em;
+  }
+  .room-listing-main{
+    margin-top: 13em;
   }
   .btn-center{
     text-align: center
@@ -203,7 +206,7 @@ html{
   background: url('/images/background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 75vh;
+  min-height: 90vh;
   position: relative;
 
 }
@@ -242,12 +245,12 @@ html{
   border-radius: 4px ;
   color:#888;
   font-size: 0.8em;
-  font-family: "Roboto",Helvetica,Arial,sans-serif;
   outline: none;
 }
 
 .banner-form label {
   text-transform: uppercase;
+  color: #484848;
 }
 
 
@@ -271,6 +274,8 @@ button {
   border: none;
   cursor: pointer;
   width: 100%;
+  background-color: #0b4dad;
+  color: white;
 }
 
 button:hover {
@@ -307,24 +312,23 @@ span.psw {
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
+  /* display: none; Hidden by default */
+  /* position: fixed; Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
+  background-color: rgba(5, 98, 232, 0.16); /* Fallback color */
+  padding-top: 20px;
 }
 
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
+  border: 1px solid #ccc;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
@@ -421,6 +425,8 @@ span.psw {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 1rem;
+  margin-left:3em;
+  margin-right: 3em;
   padding: 1rem;
   grid-row-gap: 0.6rem;
   grid-column-gap: 0.6rem;
@@ -428,12 +434,18 @@ span.psw {
     
    /* For Mobiles */ 
    @media screen and (max-width:500px) {
-    .places-block{
+    .places-block,.explore{
         grid-template-columns: 1fr;
     }
+    .room-listing-main{
+      margin-top: 20em;
+    }
     main {
-      margin-top: 12em;
+
+      margin-top: 18em;
+  
   }
+  
   .main-heading{
     margin:0;
     text-align: center;
@@ -443,6 +455,15 @@ span.psw {
   }
   .footer-grid{
   grid-template-columns: 1fr; 
+  }
+  .banner-section .container{
+    padding: 1em;
+    left: 2em;
+    top: 4em;
+    width: 250px;
+  } 
+  .banner-section h2{
+    font-size: 1.2em;
   }
   
   }
@@ -455,8 +476,11 @@ span.psw {
           grid-template-columns: 1fr 1fr;
       }
       main {
-        margin-top: 17em;
+        margin-top: 14em;
         text-align: center;
+    }
+    .room-listing-main{
+      margin-top: 17em;
     }
     .places-block {
       padding: 0 1.5em;
@@ -464,6 +488,18 @@ span.psw {
   .footer-grid{
     grid-template-columns: 1fr; 
     }
+    .banner-section .container{
+      top: 3em;
+    }
+    .banner-section{
+      min-height: 100vh;
+    }
+    .banner-section .container{
+    padding: 2em;
+    left: 4em;
+    width: 418px;
+    }
+
      
   }
   
@@ -472,6 +508,11 @@ span.psw {
       .places-block{
           grid-template-columns: 1fr 1fr;
       }
+      .banner-section .container{
+        top: 3em;
+      }
+      
+      
     
       
   }
