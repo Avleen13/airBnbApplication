@@ -1,21 +1,22 @@
 <div  class="modal">
-  {{#each messages}}
-        <div class="errors">{{this}}</div>
-      {{/each}}
-  <form class="modal-content animate" action="/sendMessage" method="post">
+  
+  <form class="modal-content animate" action="/validation-login" method="POST">
     <div class="imgcontainer">
       {{!-- <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> --}}
       {{!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> --}}
     </div>
 
     <div class="container">
+      {{#each messages}}
+        <div class="errors">{{this}}</div>
+      {{/each}}
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" >
 
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" >
-        
-      <button type="submit">Login</button>
+        <input type="submit" class="btn-login" value="Login">
+      {{!-- <button type="submit">Login</button> --}}
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>

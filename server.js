@@ -1,12 +1,14 @@
 const express = require("express");
 const exphbs  = require('express-handlebars');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 
 const app = express();
 
 //This allows express to make my static content avialable from the public
-app.use(express.static('public'))
+app.use(express.static('public'));
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //This tells Express to set or register Handlebars as its' Template/View Engine
 app.engine('handlebars', exphbs());
@@ -17,7 +19,7 @@ app.get("/",(req,res)=>{
     res.render("home",{
         title: "Top Rated Places to Stay | Airbnb",
         headingInfo : "Home Page"
-    })
+    });
 });
 
 app.get("/room-listing",(req,res)=>{
@@ -44,7 +46,7 @@ app.get("/user-registration",(req,res)=>{
 app.get("/login", (req,res) => {
 
   res.render("login", {
-      title:"Log In",
+      title:"Log In Page",
      
   });
 
@@ -89,17 +91,20 @@ app.post("/validation", (req,res)=>{
 
   const errors=[];
 
-  if(req.body.uname == ""){
-      errors.push("Please enter your first name.");
-      
+  if(req.body.uemail == ""){
+      errors.push("Please enter your email address.");  
   }
 
-  if(req.body.lst_name == ""){
-      errors.push("Please enter your last name.");
+  if(req.body.fname == ""){
+      errors.push("Please enter your firstname.");
   }
+  if(req.body.lname == ""){
+    errors.push("Please enter your lastname.");
+}
   if(req.body.psw == ""){
     errors.push("Please enter your password.");
   }
+
   if(errors.length > 0 )
   {
   res.render("userRegistration",{
@@ -107,6 +112,27 @@ app.post("/validation", (req,res)=>{
   })
 }
 });
+
+app.post("/validation-login", (req,res)=>{
+
+  const errors=[];
+
+  if(req.body.uname == ""){
+      errors.push("Please enter your first name.");
+      
+  }
+
+  if(req.body.psw == ""){
+    errors.push("Please enter your password.");
+  }
+  if(errors.length > 0 )
+  {
+  res.render("login",{
+      messages:errors
+  })
+}
+});
+
 
 
 const PORT=3000;

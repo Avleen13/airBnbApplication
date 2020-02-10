@@ -1,7 +1,5 @@
 <div id="id02" class="modal">
-  {{#each messages}}
-        <div class="errors">{{this}}</div>
-      {{/each}}
+ 
   <form class="modal-content animate" action="/validation" method="post">
     <div class="imgcontainer">
       {{!-- <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> --}}
@@ -9,17 +7,23 @@
     </div>
 
     <div class="container">
-
+       {{#each messages}}
+        <div class="errors">{{this}}</div>
+      {{/each}}
       <label for="uemail"><b>Email Address</b></label>
       <input type="text" placeholder="Enter Email Address" name="uemail" >
 
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" >
+      <label for="fname"><b>First name</b></label>
+      <input type="text" placeholder="Enter First name" name="fname" >
+
+      <label for="lname"><b>Last Name</b></label>
+      <input type="text" placeholder="Enter Last Name" name="lname" >
 
       <label for="psw"><b>Create Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw">
-        
-      <button type="submit">Sign Up</button>
+
+     <input type="submit" class="btn-signup" value="SignUp">   
+      
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
