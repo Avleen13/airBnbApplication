@@ -35,7 +35,7 @@ app.get("/room-listing",(req,res)=>{
 app.get("/user-registration",(req,res)=>{
 
     res.render("userRegistration",{
-        title: "User Registration",
+        title: "User Registration Page",
         headingInfo : "User Registration Page",
 
     });
