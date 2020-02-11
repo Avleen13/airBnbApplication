@@ -104,6 +104,9 @@ app.post("/validation", (req,res)=>{
   if(req.body.psw == ""){
     errors.push("Please enter your password.");
   }
+  else if(req.body.psw.length < 9){
+    errors.push("Password should be of atleast 8 characters");
+  }
 
   if(errors.length > 0 )
   {
@@ -111,7 +114,14 @@ app.post("/validation", (req,res)=>{
       messages:errors
   })
 }
+else {
+  res.render("roomListing", {
+  title:"Log In Page",
+ 
 });
+}
+});
+
 
 app.post("/validation-login", (req,res)=>{
 
@@ -125,11 +135,20 @@ app.post("/validation-login", (req,res)=>{
   if(req.body.psw == ""){
     errors.push("Please enter your password.");
   }
+  else if(req.body.psw.length < 9){
+    errors.push("Password should be of atleast 8 characters");
+  }
   if(errors.length > 0 )
   {
   res.render("login",{
       messages:errors
   })
+}
+else {
+  res.render("roomListing", {
+  title:"Log In Page",
+ 
+});
 }
 });
 
