@@ -116,7 +116,7 @@ app.post("/validation", (req,res)=>{
 }
 else {
   res.render("roomListing", {
-  title:"Log In Page",
+  title:"Room List Page",
  
 });
 }
@@ -146,7 +146,7 @@ app.post("/validation-login", (req,res)=>{
 }
 else {
   res.render("roomListing", {
-  title:"Log In Page",
+  title:"Room List Page",
  
 });
 }
