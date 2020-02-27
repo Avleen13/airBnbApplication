@@ -77,45 +77,44 @@
 
 <section>
   <div class="main-heading">
-    <h2>Deals and Offers for this Month</h2>
+    <h2>Featured Room</h2>
     <p>Multi-day trips led by local experts—activities, meals, and stays included.</p>
   </div>
 
   <div class="places-block">
+     {{#each room}}
     <div class="destination_x">
+     
       <img class="images" src="images/img9.jpg" alt="image">
+      
       <div class="content_x">
-        <span>HOTEL ROOM | CISTERNINO, LA HABANA</span>
+        <span>{{this.title}}</span>
         <p class="p-heading">Entire Guest House <span class="heart-red"><i class="fas fa-heart"></i></span>
         </p>
-        <p>Cave with garden at Sacromonte</p>
-        <p>$90 CAD/night <span class="heart-red">(50% OFF)</span></p>
+        <p>{{this.description}}</p>
+        <p>{{this.price}} <span class="heart-red">(50% OFF)</span></p>
         <p> <i class="fa fa-star" aria-hidden="true"></i> 4.5 (200)<p>
-            <div class="btn-center">
+        <div class="btn-center">
               <a href="#" class="btn" title="book">Explore Now!</a>
-            </div>
-      </div>
-      <div>
-
+        </div>
       </div>
 
-    </div>
-
-    <div class="destination_x">
+      </div>
+ {{/each}}
+  
+    {{!-- <div class="destination_x">
       <img class="images" src="images/img10.jpg" alt="image">
       <div class="content_x">
-        <span class="verified-box">VERIFIED | CISTERNINO, BRINDIS</span>
+        <span class="verified-box">{{this.title}}</span>
         <p class="p-heading">Entire Flat <a href="#"><span class="heart-red"><i class="fas fa-heart"></i></span></a></p>
-        <p>Exceptional property private beach</p>
-        <p>$70 CAD/night <span class="heart-red">(40% OFF)</span></p>
+        <p>{{this.description}}</p>
+        <p>{{this.price}} <span class="heart-red">(40% OFF)</span></p>
         <p> <i class="fa fa-star" aria-hidden="true"></i> 4.7 (420)<p>
             <div class="btn-center">
               <a href="#" class="btn" title="book">Explore Now!</a>
             </div>
       </div>
-      <div>
-
-      </div>
+     
 
     </div>
 
@@ -123,18 +122,16 @@
     <div class="destination_x">
       <img class="images" src="images/img11.jpg" alt="image">
       <div class="content_x">
-        <span>ENTIRE VILLA | SAN FRANCISCO</span>
+        <span>{{this.title}}</span>
         <p class="p-heading">Entire House</p>
-        <p>A beautiful villa in North Iceland </p>
-        <p>$90 CAD/night <span class="heart-red">(70% OFF)</span></p>
+        <p>{{this.description}} </p>
+        <p>{{this.price}} <span class="heart-red">(70% OFF)</span></p>
         <p> <i class="fa fa-star" aria-hidden="true"></i> 4.9 (220) . Superhost<p>
             <div class="btn-center">
               <a href="#" class="btn" title="book">Explore Now!</a>
             </div>
       </div>
-      <div>
-
-      </div>
+      
 
     </div>
 
@@ -142,16 +139,19 @@
     <div class="destination_x">
       <img class="images" src="images/img12.jpg" alt="image">
       <div class="content_x">
-        <span>PRIVATE ROOM | VEDADO, HABANA</span>
+        <span>{{this.title}}</span>
         <p class="p-heading">Entire Villa <span class="heart-red"><i class="fas fa-heart"></i></span>
         </p>
-        <p>Best View From Modern Chalet</p>
-        <p>$90 CAD/night <span class="heart-red">(60% OFF)</span></p>
+        <p>{{this.description}}</p>
+        <p>{{this.price}} <span class="heart-red">(60% OFF)</span></p>
         <p> <i class="fa fa-star" aria-hidden="true"></i> 5.0 (410)<p>
             <div class="btn-center">
               <a href="#" class="btn" title="book">Explore Now!</a>
             </div>
       </div>
-      <div>
-      </div>
+     </div> --}}
+
+     </div> 
+    
+
 </section>

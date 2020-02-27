@@ -2,6 +2,7 @@ const express = require("express");
 const exphbs  = require('express-handlebars');
 var bodyParser = require('body-parser');
 
+const roomModel = require("./models/room");
 
 const app = express();
 
@@ -18,7 +19,8 @@ app.get("/",(req,res)=>{
 
     res.render("home",{
         title: "Top Rated Places to Stay | Airbnb",
-        headingInfo : "Home Page"
+        headingInfo : "Home Page",
+        room : roomModel.getallRooms()
     });
 });
 
@@ -29,6 +31,17 @@ app.get("/room-listing",(req,res)=>{
         headingInfo : "Room Listing Page"
 
     });
+
+
+});
+
+app.get("/dashboard",(req,res)=>{
+
+  res.render("dashboard",{
+      title: "Dashboard Page",
+      headingInfo : "Dashboard Page"
+
+  });
 
 
 });
@@ -84,6 +97,7 @@ app.post("/sendMessage",(req,res)=>{
       messages : errors
     })
   }
+  
 
 });
 
@@ -115,10 +129,24 @@ app.post("/validation", (req,res)=>{
   })
 }
 else {
-  res.render("roomListing", {
-  title:"Room List Page",
- 
-});
+  
+    const accountSid = 'ACd6049fb80af6f0a16b1904f22302a65d';
+    const authToken = 'ef8ba379a6621b7dd13ef7ef399d4e1f';
+    const client = require('twilio')(accountSid, authToken);
+    
+    client.messages
+      .create({
+         body: `${req.body.fname} ${req.body.lname} Email :${req.body.uemail}`,
+         from: '+14805088853',
+         to: `${req.body.phone}`
+       })
+      .then(messages => {
+        console.log(messages.sid);
+        res.render("home");
+      })
+      .catch((err)=>{
+          console.log(`Error ${err}`);
+      })
 }
 });
 
@@ -154,7 +182,7 @@ else {
 
 
 
-const PORT=process.env.PORT;
+const PORT=process.env.PORT || 3000;
 app.listen(PORT,()=>{
 
     console.log(`Web server is up and running`)
