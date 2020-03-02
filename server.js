@@ -28,7 +28,8 @@ app.get("/room-listing",(req,res)=>{
 
     res.render("roomListing",{
         title: "Room Listing",
-        headingInfo : "Room Listing Page"
+        headingInfo : "Room Listing Page",
+        room : roomModel.getallRooms()
 
     });
 
@@ -93,7 +94,7 @@ app.post("/sendMessage",(req,res)=>{
 
   if(errors.length > 0)
   {
-    res.render("home",{
+    res.render("dashboard",{
       messages : errors
     })
   }
@@ -124,7 +125,7 @@ app.post("/validation", (req,res)=>{
 
   if(errors.length > 0 )
   {
-  res.render("userRegistration",{
+  res.render("dashboard",{
       messages:errors
   })
 }

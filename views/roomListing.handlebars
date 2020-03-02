@@ -3,7 +3,29 @@
                 <h2>Top-Rated Places To Stay</h2>
             </div>
 
+
             <div class="places-block">
+     {{#each room}}
+    <div class="destination_x">
+     
+      <img class="images" src="{{this.image}}" alt="image">
+      
+      <div class="content_x">
+        <span>{{this.title}}</span>
+        <p class="p-heading">Entire Guest House <span class="heart-red"><i class="fas fa-heart"></i></span>
+        </p>
+        <p>{{this.description}}</p>
+        <p>{{this.price}} <span class="heart-red">(50% OFF)</span></p>
+        <p> <i class="fa fa-star" aria-hidden="true"></i> 4.5 (200)<p>
+        <div class="btn-center">
+              <a href="#" class="btn" title="book">Explore Now!</a>
+        </div>
+      </div>
+
+      </div>
+ {{/each}}
+
+            {{!-- <div class="places-block">
                 <div class="destination_x">
                     <img class="images" src="images/img1.jpg" alt="image">
                     <div class="content_x">
@@ -158,7 +180,7 @@
                 </div>
 
                 
-                
+                 --}}
 
 
                
@@ -166,6 +188,6 @@
 
                 
 
-                </div>
-            </div>
+                {{!-- </div>
+            </div> --}}
         </section>

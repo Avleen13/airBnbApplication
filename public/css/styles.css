@@ -426,11 +426,25 @@ span.psw {
 
 /*  dashboard page*/
 
-.welcome-section{
-  border:1px solid #666;
+.welcome-section,.profile-section{
+  border:1px solid rgb(228, 228, 228);
   padding: 1em;
-  margin: 0 10em 2em 0;
+  margin: 1em;
   padding: 1em;
+}
+
+.profile-section{
+  text-align: center;
+}
+.dashboard-section{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 1rem;
+  margin-left:3em;
+  margin-right: 3em;
+  padding: 1rem;
+  grid-row-gap: 0.6rem;
+  grid-column-gap: 0.6rem;
 }
    /* For Mobiles */ 
    @media screen and (max-width:500px) {
