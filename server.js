@@ -140,8 +140,8 @@ else {
   const msg = {
   to: `${req.body.uemail}`,
   from: 'test@example.com',
-  subject: 'Email from Avleen',
-  text: 'Hello,This is Avleen. '
+  subject: 'Welcome to Airbnb',
+  text: 'Hope you are doing great. '
 };
 sgMail.send(msg)
 .then(() => {
