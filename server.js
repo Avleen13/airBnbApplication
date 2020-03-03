@@ -140,8 +140,8 @@ else {
   const msg = {
   to: `${req.body.uemail}`,
   from: 'test@example.com',
-  subject: 'Sending with Twilio SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js'
+  subject: 'Email from Avleen',
+  text: 'Hello,This is Avleen. '
 };
 sgMail.send(msg)
 .then(() => {

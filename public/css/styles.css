@@ -523,7 +523,7 @@ span.psw {
   
   /* For Desktop */
   @media screen and (max-width:1128px) and (min-width:928px){
-      .places-block{
+      .places-block,.dashboard-section{
           grid-template-columns: 1fr 1fr;
       }
       .banner-section .container{
