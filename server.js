@@ -145,7 +145,9 @@ else {
 };
 sgMail.send(msg)
 .then(() => {
-  res.redirect("dashboard");
+})
+.catch((err)=>{
+  console.log(err);
 })
     
     client.messages
@@ -158,6 +160,9 @@ sgMail.send(msg)
         console.log(messages.sid);
         res.render("dashboard");
       })   
+      .catch((err)=>{
+        console.log(err);
+      })
 }
 });
 
