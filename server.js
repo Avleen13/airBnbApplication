@@ -10,6 +10,14 @@ const app = express();
 //This allows express to make my static content avialable from the public
 app.use(express.static('public'));
 
+// const generalController = require("./controllers/general");
+// const productController = require("./controllers/rooms");
+
+// //map each controller to the app object
+
+// app.use("/",generalController);
+// app.use("/product",productController);
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //This tells Express to set or register Handlebars as its' Template/View Engine

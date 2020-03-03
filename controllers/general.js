@@ -3,49 +3,88 @@ const router = express.Router();
 
 
 //home route
-router.get("/",(req,res)=>{
-
-    res.render("general/home",{
-        title:"Home Page"
+app.get("/",(req,res)=>{
+    console.log(process.env.TWILIO_TOKEN);
+    res.render("home",{
+        title: "Top Rated Places to Stay | Airbnb",
+        headingInfo : "Home Page",
+        room : roomModel.getallRooms()
     });
 });
 
-//contact us route
-router.get("/contact-us",(req,res)=>{
+app.get("/room-listing",(req,res)=>{
 
-    res.render("general/contactUs",{
-        title:"Contact Page"
+    res.render("roomListing",{
+        title: "Room Listing",
+        headingInfo : "Room Listing Page",
+        room : roomModel.getallRooms()
+
     });
+
+
 });
 
-//process contact us form for when user submits form
-router.post("/contact-us",(req,res)=>{
+app.post("/validation", (req,res)=>{
 
-    const {firstName,lastName,email,message} = req.body;
-
-    
-    const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
-    const msg = {
-    to: `kadeembestteaches@gmail.com`,
-    from: `${email}`,
-    subject: 'Contact Us Form Submit',
-    html: 
-    `Vistor's Full Name ${firstName} ${lastName} <br>
-     Vistor's Email Address ${email} <br>
-     Vistor's message : ${message}<br>
-    `,
-    };
-
-    //Asynchornous operation (who don't know how long this will take to execute)
-    sgMail.send(msg)
-    .then(()=>{
-        res.redirect("/");
+    const errors=[];
+  
+    if(req.body.uemail == ""){
+        errors.push("Please enter your email address.");  
+    }
+  
+    if(req.body.fname == ""){
+        errors.push("Please enter your firstname.");
+    }
+    if(req.body.lname == ""){
+      errors.push("Please enter your lastname.");
+  }
+    if(req.body.psw == ""){
+      errors.push("Please enter your password.");
+    }
+    else if(req.body.psw.length < 9){
+      errors.push("Password should be of atleast 8 characters");
+    }
+  
+    if(errors.length > 0 )
+    {
+    res.render("userRegistration",{
+        messages:errors
     })
-    .catch(err=>{
-        console.log(`Error ${err}`);
-    });
-
-});
-
-module.exports = router;
+  }
+  else {
+      
+      const accountSid = process.env.TWILIO_SID;
+      const authToken = process.env.TWILIO_TOKEN;
+      const client = require('twilio')(accountSid, authToken);
+      const sgMail = require('@sendgrid/mail');
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const msg = {
+    to: `${req.body.uemail}`,
+    from: 'test@example.com',
+    subject: 'Welcome to Airbnb',
+    text: 'Hope you are doing great. '
+  };
+  sgMail.send(msg)
+  .then(() => {
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
+      
+      client.messages
+        .create({
+           body: `${req.body.fname} ${req.body.lname} Email :${req.body.uemail}`,
+           from: '+14805088853',
+           to: `${req.body.phone}`
+         })
+        .then(messages => {
+          console.log(messages.sid);
+          res.render("dashboard");
+        })   
+        .catch((err)=>{
+          console.log(err);
+        })
+  }
+  });
+  module.exports=router;
+  
