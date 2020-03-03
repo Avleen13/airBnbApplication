@@ -3,7 +3,7 @@ const exphbs  = require('express-handlebars');
 var bodyParser = require('body-parser');
 
 const roomModel = require("./models/room");
-require('dotenv').config({path:"./config.env"})
+require('dotenv').config({path:"./config.env"});
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 app.get("/",(req,res)=>{
-
+    console.log(process.env.TWILIO_TOKEN);
     res.render("home",{
         title: "Top Rated Places to Stay | Airbnb",
         headingInfo : "Home Page",
@@ -131,10 +131,22 @@ app.post("/validation", (req,res)=>{
   })
 }
 else {
-  
-    const accountSid = 'process.env.ACCOUNT_Sid';
-    const authToken = 'process.env.AUTH_Token';
+    
+    const accountSid = process.env.TWILIO_SID;
+    const authToken = process.env.TWILIO_TOKEN;
     const client = require('twilio')(accountSid, authToken);
+    const sgMail = require('@sendgrid/mail');
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const msg = {
+  to: 'avleen39@gmail.com',
+  from: 'test@example.com',
+  subject: 'Sending with Twilio SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js'
+};
+sgMail.send(msg)
+.then(() => {
+  res.redirect("dashboard");
+})
     
     client.messages
       .create({
@@ -144,11 +156,8 @@ else {
        })
       .then(messages => {
         console.log(messages.sid);
-        res.render("dasboard");
-      })
-      .catch((err)=>{
-          console.log(`Error ${err}`);
-      })
+        res.render("dashboard");
+      })   
 }
 });
 
