@@ -3,6 +3,7 @@ const exphbs  = require('express-handlebars');
 var bodyParser = require('body-parser');
 
 const roomModel = require("./models/room");
+require('dotenv').config({path:"./config.env"})
 
 const app = express();
 
@@ -131,8 +132,8 @@ app.post("/validation", (req,res)=>{
 }
 else {
   
-    const accountSid = 'ACd6049fb80af6f0a16b1904f22302a65d';
-    const authToken = 'ef8ba379a6621b7dd13ef7ef399d4e1f';
+    const accountSid = 'process.env.ACCOUNT_Sid';
+    const authToken = 'process.env.AUTH_Token';
     const client = require('twilio')(accountSid, authToken);
     
     client.messages
@@ -143,7 +144,7 @@ else {
        })
       .then(messages => {
         console.log(messages.sid);
-        res.render("home");
+        res.render("dasboard");
       })
       .catch((err)=>{
           console.log(`Error ${err}`);
@@ -174,7 +175,7 @@ app.post("/validation-login", (req,res)=>{
   })
 }
 else {
-  res.render("roomListing", {
+  res.render("dashboard", {
   title:"Room List Page",
  
 });

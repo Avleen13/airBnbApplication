@@ -433,12 +433,15 @@ span.psw {
   padding: 1em;
 }
 
+.profile-section img{
+  border-radius: 50%;
+}
 .profile-section{
   text-align: center;
 }
 .dashboard-section{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-bottom: 1rem;
   margin-left:3em;
   margin-right: 3em;
@@ -467,7 +470,7 @@ span.psw {
   .places-block {
     padding: 0 2em;
   }
-  .footer-grid{
+  .footer-grid,.dashboard-section{
   grid-template-columns: 1fr; 
   }
   .banner-section .container{
@@ -479,6 +482,7 @@ span.psw {
   .banner-section h2{
     font-size: 1.2em;
   }
+
   
   }
   
@@ -486,7 +490,7 @@ span.psw {
   /* For Tablets */
   
   @media screen and (max-width:927px) and (min-width:501px){
-      .places-block{
+      .places-block,.dashboard-section{
           grid-template-columns: 1fr 1fr;
       }
       main {
