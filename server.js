@@ -1,9 +1,10 @@
 const express = require("express");
 const exphbs  = require('express-handlebars');
 var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 
-require('dotenv').config({path:"./config.env"});
+require('dotenv').config({path:"./config/key.env"});
 
 const app = express();
 
@@ -25,9 +26,13 @@ app.use(express.static('public'));
  app.use("/room",roomController);
 
 
+ mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true})
+ .then(()=>{
+     console.log(`Connected to MongoDB Database`);
+ })
+ .catch(err=>console.log(`Error occured when connecting to database ${err}`));
 
-
-const PORT=process.env.PORT || 3000;
+const PORT=process.env.PORT;
 app.listen(PORT,()=>{
 
     console.log(`Web server is up and running`)
