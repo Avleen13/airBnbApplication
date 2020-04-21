@@ -1,0 +1,31 @@
+<section class="room-listing-main">
+            <div class="main-heading">
+                <h2>Room Created</h2>
+            </div>
+
+
+            <div class="places-block">
+     {{#each rooms}}
+    <div class="destination_x">
+     
+      {{!-- <img class="images" src="{{this.pic}}" alt="image"> --}}
+      
+      <div class="content_x">
+        <p class="p-heading">{{this.title}} <span class="heart-red"><i class="fas fa-heart"></i></span>
+        </p>
+        <p>{{this.description}}</p>
+        <p>$ {{this.price}} </p>
+        <p>{{this.location}}<p>
+        <p>{{this.featuredroom}}</p>
+        <div class="btn-center">
+              <a href="../room/edit-rooms/{{this.id}}" class="btn" title="Update">Update Details</a>
+              <a href="../room/delete/{{this.id}}?method=DELETE" class="btn" title="delete">Delete Details</a>
+        </div>
+      </div>
+
+      </div>
+
+      {{else}}
+      <div>No rooms available</div>
+ {{/each}}
+</section>

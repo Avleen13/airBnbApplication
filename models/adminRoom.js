@@ -7,33 +7,33 @@ const Schema = mongoose.Schema;
     title:
     {
       type:String,
-      required:true
+      //required:true
     },
 
     price:
     {
         type:String,
-        required:true
+        //required:true
     },
 
     description: 
     {
         type:String,
-        required:true
+        //required:true
     },
 
     location:{
         type: String,
-        required:true
+        //required:true
     },
     featuredroom:{
         type: String,
-        required:true
+        //required:true
     },
     pic:{
         type:String,
-        required:true
-    },
+        //required:true
+    }
    
   });
 

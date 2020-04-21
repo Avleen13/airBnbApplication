@@ -1,7 +1,10 @@
 const express = require('express')
 const router = express.Router();
-
+const userModel = require("../models/user");
 const roomModel = require("../models/room");
+const path = require("path");
+const bcrypt = require("bcryptjs");
+
 
 router.use(express.static('public'));
 
@@ -18,7 +21,7 @@ router.get("/",(req,res)=>{
 
 router.get("/dashboard",(req,res)=>{
 
-res.render("dashboard",{
+res.render("dashboards/dashboard",{
     title: "Dashboard Page",
     headingInfo : "Dashboard Page"
 
@@ -74,7 +77,7 @@ if(req.body.guests == "")
 
 if(errors.length > 0)
 {
-  res.render("dashboard",{
+  res.render("dashboards/dashboard",{
     messages : errors
   })
 }
@@ -86,20 +89,20 @@ router.post("/validation", (req,res)=>{
 
 const errors=[];
 
-if(req.body.uemail == ""){
+if(req.body.email == ""){
     errors.push("Please enter your email address.");  
 }
 
-if(req.body.fname == ""){
+if(req.body.firstname == ""){
     errors.push("Please enter your firstname.");
 }
-if(req.body.lname == ""){
+if(req.body.lastname == ""){
   errors.push("Please enter your lastname.");
 }
-if(req.body.psw == ""){
+if(req.body.password == ""){
   errors.push("Please enter your password.");
 }
-else if(req.body.psw.length < 9){
+else if(req.body.password.length < 9){
   errors.push("Password should be of atleast 8 characters");
 }
 
@@ -111,13 +114,33 @@ res.render("userRegistration",{
 }
 else {
   
+  const newUser = 
+  {
+      firstname:req.body.firstname,
+      lastname:req.body.lastname,
+      email:req.body.email,
+      phone:req.body.phone,
+      password:req.body.password
+  }
+
+  const user = new userModel(newUser);
+  user.save()
+  .then(()=>{
+      console.log("User Created");
+      })
+    
+  .catch(err=>console.log(`Error while inserting into the data ${err}`));
+
+
+//Email-SMS
+
   const accountSid = process.env.TWILIO_SID;
   const authToken = process.env.TWILIO_TOKEN;
   const client = require('twilio')(accountSid, authToken);
   const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
-to: `${req.body.uemail}`,
+to: `${req.body.email}`,
 from: 'test@example.com',
 subject: 'Welcome to Airbnb',
 text: 'Hope you are doing great. '
@@ -131,13 +154,13 @@ console.log(err);
   
   client.messages
     .create({
-       body: `${req.body.fname} ${req.body.lname} Email :${req.body.uemail}`,
+       body: `${req.body.firstname} ${req.body.lastname} Email :${req.body.email}`,
        from: '+14805088853',
        to: `${req.body.phone}`
      })
     .then(messages => {
       console.log(messages.sid);
-      res.render("dashboard");
+      res.render("dashboards/dashboard");
     })   
     .catch((err)=>{
       console.log(err);
@@ -168,8 +191,8 @@ res.render("login",{
 })
 }
 else {
-res.render("dashboard", {
-title:"Room List Page",
+res.render("dashboards/dashboard", {
+title:"Dashboard",
 
 });
 }

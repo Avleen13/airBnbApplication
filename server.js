@@ -2,6 +2,7 @@ const express = require("express");
 const exphbs  = require('express-handlebars');
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const fileUpload = require("express-fileupload");
 
 
 require('dotenv').config({path:"./config/key.env"});
@@ -17,8 +18,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //This allows express to make my static content avialable from the public
 app.use(express.static('public'));
 
+app.use((req,res,next)=>{
+
+    if(req.query.method == "PUT")
+    {
+        req.method="PUT"
+    }
+
+    else if(req.query.method == "DELETE")
+    {
+        req.method="DELETE"
+    }
+
+    next();
+});
+
+
  const generalController = require("./controllers/general");
  const roomController = require("./controllers/rooms");
+
+ app.use(fileUpload());
 
 // //map each controller to the app object
 

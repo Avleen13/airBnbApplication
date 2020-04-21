@@ -1,0 +1,37 @@
+<div id="id02" class="modal">
+ 
+  <form class="modal-content animate" method="POST" action="/room/updateRoom/{{_id}}?method=PUT" enctype="multipart/form-data>
+    <div class="imgcontainer">
+      <h2>Update Your Room</h2>
+    </div>
+
+    <div class="container">
+       
+      <label for="rtilte"><b>Room Title</b></label>
+      <input type="text" placeholder="Enter Room Title" name="title" value="{{title}}">
+
+      <label for="price"><b>Price</b></label>
+      <input type="text" placeholder="Enter Price" name="price" value="{{price}}">
+
+      <label for="description"><b>Room Description</b></label>
+      <input type="text" placeholder="Enter room description" name="description" value="{{description}}">
+
+      <label for="location"><b>Location</b></label>
+      <input type="text" placeholder="Enter Location" name="location" value="{{location}}">
+
+      <label for="featuredroom"><b>Featured Room</b></label>
+      <input type="text" placeholder="Is this a featured room - yes or no" name="featuredroom" value="{{featuredroom}}">
+
+       <label for="pic"><b>Room Image Upload</b></label>
+      <input type="file" placeholder="Upload image" name="pic" value="{{pic}}">
+
+     <input type="submit" class="btn-signup" value="UPDATE Room">   
+      
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      
+    </div>
+  </form>
+</div>
