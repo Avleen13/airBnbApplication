@@ -61,8 +61,8 @@ router.post("/create-room",(req,res)=>
             
                 .then(()=>{
                     
-                     res.redirect(`room/view-room/${user._id}`);
-                    //res.redirect("/room/view-room");
+                     //res.redirect(`room/view-room/${user._id}`);
+                    res.redirect("/room/view-room");
                 })
         })
      })
