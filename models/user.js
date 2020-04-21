@@ -37,6 +37,10 @@ const userSchema = new Schema({
     {
         type:String,
         default:"User"
+    },
+    pic:
+    {
+        type:String
     }
 
 });

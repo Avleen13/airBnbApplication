@@ -1,19 +1,19 @@
 <section class="room-listing-main">
      <div class="main-heading">
-         <h2>Welcome to Airbnb, Admin!</h2>
+         <h2>Welcome to Admin Dashboard, {{user.firstname}} !</h2>
      </div>
 
     <div class="dashboard-section">
         <div class="profile-section">
-            <img src="/images/user_pic.png" alt="User Pic">
-           <p>Update Photo</p>
-            <p>Admin</p>
-            <p>avleen39@gmail.com</p>
-            <p>+1(437)220-0142</p>
+            <img src="/images/{{user.pic}}" alt="User Pic">
+           <p>Your Details</p>
+            <p>{{user.firstname}}</p>
+            <p>{{user.email}}</p>
+            <p>{{user.phone}}</p>
         
             <p>Lives in Scarborough</p>
             <p>Joinded in 2020</p>
-            <a href="#" class="btn">Complete Profile</a>
+        
             <a href="../room/view-room" class="btn">View Rooms</a>
             <a href="../room/create-room" class="btn">Create Room</a>
 

@@ -2,14 +2,17 @@ const express = require('express')
 const router = express.Router();
 const userModel = require("../models/user");
 const roomModel = require("../models/room");
+const adminRoomModel = require("../models/adminRoom");
 const path = require("path");
 const bcrypt = require("bcryptjs");
+const session = require('express-session');
+const isLoggedIn = require("../middleware/auth");
+const DashboardLoader = require("../middleware/authorization")
 
 
 router.use(express.static('public'));
 
 router.get("/",(req,res)=>{
-  console.log(process.env.TWILIO_TOKEN);
   res.render("general/home",{
       title: "Top Rated Places to Stay | Airbnb",
       headingInfo : "Home Page",
@@ -19,7 +22,7 @@ router.get("/",(req,res)=>{
 
 
 
-router.get("/dashboard",(req,res)=>{
+router.get("/dashboard",isLoggedIn,DashboardLoader,(req,res)=>{
 
 res.render("dashboards/dashboard",{
     title: "Dashboard Page",
@@ -120,7 +123,8 @@ else {
       lastname:req.body.lastname,
       email:req.body.email,
       phone:req.body.phone,
-      password:req.body.password
+      password:req.body.password,
+      pic:req.body.pic
   }
 
   const user = new userModel(newUser);
@@ -155,12 +159,15 @@ console.log(err);
   client.messages
     .create({
        body: `${req.body.firstname} ${req.body.lastname} Email :${req.body.email}`,
-       from: '+14805088853',
+       from: '+15672293048',
        to: `${req.body.phone}`
      })
     .then(messages => {
-      console.log(messages.sid);
-      res.render("dashboards/dashboard");
+      //console.log(messages.sid);
+      // res.render("dashboards/dashboard");
+        res.render("../views/login",{
+        name:`${req.body.firstname} ${req.body.lastname}`
+        });
     })   
     .catch((err)=>{
       console.log(err);
@@ -171,31 +178,93 @@ console.log(err);
 
 router.post("/validation-login", (req,res)=>{
 
-const errors=[];
 
-if(req.body.uname == ""){
-    errors.push("Please enter your first name.");
+  userModel.findOne({email:req.body.email})
+  .then(user=>{
+      const errors = [];
+
+      if(user == null)
+      {
+          errors.push("Sorry , you have entered invalid credentials!");
+          res.render("../views/login",
+               {
+                   messages : errors
+               })
+      }
+
+      else
+      {
+          bcrypt.compare(req.body.password, user.password)
+          .then(isMatched=>{
+
+              if(isMatched)
+              {
+                  req.session.userInfo = user; 
+                  res.redirect('/dashboard');
+              }
+
+              else
+              {
+                  errors.push("Sorry , you have entered invalid credentials!");
+                  res.render("../views/login",
+               {
+                   messages : errors
+               }) 
+              }
+          })
+          .catch((err)=>console.log(err));
+      }
+  })
+  .catch((err)=>console.log(err));
+
+
+// const errors=[];
+
+// if(req.body.email == ""){
+//     errors.push("Please enter your email.");
     
-}
+// }
 
-if(req.body.psw == ""){
-  errors.push("Please enter your password.");
-}
-else if(req.body.psw.length < 9){
-  errors.push("Password should be of atleast 8 characters");
-}
-if(errors.length > 0 )
-{
-res.render("login",{
-    messages:errors
+// if(req.body.password == ""){
+//   errors.push("Please enter your password.");
+// }
+// else if(req.body.password.length < 9){
+//   errors.push("Password should be of atleast 8 characters");
+// }
+// if(errors.length > 0 )
+// {
+// res.render("login",{
+//     messages:errors
+// })
+// }
+// else {
+// res.render("dashboards/dashboard", {
+// title:"Dashboard",
+
+// });
+// }
+});
+
+router.get("/room_pic/:id",(req,res)=>{
+
+  adminRoomModel.findById(req.params.id)
+  .then((user)=>{
+
+      const {pic} = user;
+
+      res.render("../views/dashboards/adminDashboard",{
+      pic
+      }
+      )
+  })
+
+  .catch(err=>console.log(`Error displaying rooms from the database ${err}`));
+});
+
+router.get("/logout",(req,res)=>{
+
+  req.session.destroy();
+  res.redirect("/login")
 })
-}
-else {
-res.render("dashboards/dashboard", {
-title:"Dashboard",
-
-});
-}
-});
 
 module.exports=router;

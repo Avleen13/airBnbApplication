@@ -1,10 +1,9 @@
 <div id="id02" class="modal">
  
-  <form class="modal-content animate" method="POST" action="/room/updateRoom/{{_id}}?method=PUT" enctype="multipart/form-data>
+  <form class="modal-content animate" method="POST" action="/room/updateRoom/{{_id}}?method=PUT" enctype="multipart/form-data">
     <div class="imgcontainer">
       <h2>Update Your Room</h2>
     </div>
-
     <div class="container">
        
       <label for="rtilte"><b>Room Title</b></label>
@@ -23,7 +22,7 @@
       <input type="text" placeholder="Is this a featured room - yes or no" name="featuredroom" value="{{featuredroom}}">
 
        <label for="pic"><b>Room Image Upload</b></label>
-      <input type="file" placeholder="Upload image" name="pic" value="{{pic}}">
+      <input type="file" placeholder="Upload image" name="pic" >
 
      <input type="submit" class="btn-signup" value="UPDATE Room">   
       

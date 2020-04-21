@@ -3,6 +3,8 @@ const router = express.Router();
 const path = require("path");
 const adminRoomModel = require("../models/adminRoom");
 const roomModel = require("../models/room");
+const isLoggedIn = require("../middleware/auth");
+const DashboardLoader = require("../middleware/authorization")
 
 router.use(express.static('public'));
 
@@ -22,8 +24,12 @@ router.get("/room-listing",(req,res)=>{
   });
 });
 
+router.get("/admin-dash",isLoggedIn,DashboardLoader,(req,res)=>{
+    res.render("/dashboards/adminDashboard")
+})
+
 //Route to direct use to Add Task form
-router.get("/create-room",(req,res)=>
+router.get("/create-room",isLoggedIn,(req,res)=>
 {
     res.render("room/createRoom");
 });
@@ -37,14 +43,14 @@ router.post("/create-room",(req,res)=>
             description : req.body.description,
             location: req.body.location,
             featuredroom:req.body.featuredroom,
-            pic:req.body.pic
+            
         };
 
-     const room =  new adminRoomModel(newRoom);
-     room.save()
+     const user =  new adminRoomModel(newRoom);
+     user.save()
     .then((user)=>{
 
-        req.files.pic.name = `pic_${user._id}${path.parse(req.files.pic.name).ext}`;
+        req.files.pic.name = `room_pic_${user._id}${path.parse(req.files.pic.name).ext}`;
         req.files.pic.mv(`public/images/${req.files.pic.name}`)
         .then(()=>{
 
@@ -54,7 +60,9 @@ router.post("/create-room",(req,res)=>
                 })
             
                 .then(()=>{
-                    res.redirect("/room/view-room");
+                    
+                     res.redirect(`room/view-room/${user._id}`);
+                    //res.redirect("/room/view-room");
                 })
         })
      })
@@ -91,19 +99,20 @@ router.get("/view-room",(req,res)=>
 });
 
 
-router.get("/edit-rooms/:id",(req,res)=>{
+router.get("/edit-rooms/:id",isLoggedIn,(req,res)=>{
 
     adminRoomModel.findById(req.params.id)
     .then((task)=>{
 
-        const {_id,title,price,description,location,featuredroom} = task;
+        const {_id,title,price,description,location,featuredroom,pic} = task;
         res.render("room/updateRoom",{
             _id,
             title,
             price,
             description,
             location,
-            featuredroom
+            featuredroom,
+            pic
         });
 
     })
@@ -122,7 +131,8 @@ router.put("/updateRoom/:id",(req,res)=>{
             price :req.body.price,
             description : req.body.description,
             location: req.body.location,
-            featuredroom:req.body.featuredroom
+            featuredroom:req.body.featuredroom,
+            pic:req.body.pic
 
     }
 
@@ -134,7 +144,7 @@ router.put("/updateRoom/:id",(req,res)=>{
 });
 
 
-router.delete("/delete/:id",(req,res)=>{
+router.delete("/delete/:id",isLoggedIn,(req,res)=>{
     
     adminRoomModel.deleteOne({_id:req.params.id})
     .then(()=>{
@@ -146,15 +156,14 @@ router.delete("/delete/:id",(req,res)=>{
 
 router.get("/room_pic/:id",(req,res)=>{
 
-    adminModel.findById(req.params.id)
+    adminRoomModel.findById(req.params.id)
     .then((user)=>{
 
-        const {roomPic} = user;
+        const {pic} = user;
 
-        res.render("../views/dashboards/AdminDash",{
-        roomPic
-        }
-        )
+        res.render("room/viewRoom",{
+        pic
+        });
     })
 
     .catch(err=>console.log(`Error displaying rooms from the database ${err}`));

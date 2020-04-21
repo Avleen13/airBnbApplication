@@ -83,6 +83,7 @@ html{
     font-weight: lighter;
     text-decoration: none;
     cursor: pointer;
+    margin-bottom: 1em;
   }
   
   .btn:hover{
@@ -329,7 +330,7 @@ span.psw {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   width: 80%; /* Could be more or less, depending on screen size */
   box-shadow: 0 16px 40px rgba(0,0,0,0.12);
   border-radius: 0.4em;
@@ -435,6 +436,8 @@ span.psw {
 
 .profile-section img{
   border-radius: 50%;
+  width: 130px;
+height: 140px;
 }
 .profile-section{
   text-align: center;
