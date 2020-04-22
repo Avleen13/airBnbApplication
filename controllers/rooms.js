@@ -132,7 +132,6 @@ router.put("/updateRoom/:id",(req,res)=>{
             description : req.body.description,
             location: req.body.location,
             featuredroom:req.body.featuredroom,
-            pic:req.body.pic
 
     }
 
