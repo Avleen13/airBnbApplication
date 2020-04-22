@@ -208,7 +208,7 @@ html{
   background: url('/images/background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 70vh;
+  min-height: 80vh;
   position: relative;
 
 }
@@ -216,7 +216,7 @@ html{
 .banner-section .container{
     padding: 2em;
     position: absolute;
-    top:12em;
+    top:3em;
     left: 10em;
     background-color: white;
     border-radius: 0.4em;
